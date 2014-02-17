@@ -23,7 +23,7 @@ use yii\web\JsExpression;
  * charting library's Chart object.
  *
  * To use this widget, you may insert the following code in a view:
- * <pre>
+ * ~~~
  * use miloschuman\highcharts\Highcharts;
  * 
  * Highcharts::widget([
@@ -41,7 +41,7 @@ use yii\web\JsExpression;
  *       ]
  *    ]
  * ]);
- * </pre>
+ * ~~~
  *
  * By configuring the {@link $options} property, you may specify the options
  * that need to be passed to the Highcharts JavaScript object. Please refer to
@@ -51,7 +51,7 @@ use yii\web\JsExpression;
  * Alternatively, you can use a valid JSON string in place of an associative
  * array to specify options:
  *
- * <pre>
+ * ~~~
  * use miloschuman\highcharts\Highcharts;
  * 
  *  Highcharts::widget([
@@ -69,7 +69,7 @@ use yii\web\JsExpression;
  *       ]
  *    }'
  * ]);
- * </pre>
+ * ~~~
  *
  * Note: You must provide a valid JSON string (e.g. double quotes) when using
  * the second option. You can quickly validate your JSON string online using
@@ -85,12 +85,10 @@ class Highcharts extends \yii\base\Widget
 
 	protected $constr = 'Chart';
 	protected $baseScript = 'highcharts';
-	
 	public $options = [];
 	public $htmlOptions = [];
 	public $setupOptions = [];
 	public $scripts = [];
-
 
 	/**
 	 * Renders the widget.
@@ -99,9 +97,9 @@ class Highcharts extends \yii\base\Widget
 	{
 		// determine the ID of the container element
 		if (isset($this->htmlOptions['id'])) {
-			$id = $this->htmlOptions['id'];
+			$this->id = $this->htmlOptions['id'];
 		} else {
-			$id = $this->htmlOptions['id'] = $this->getId();
+			$this->id = $this->htmlOptions['id'] = $this->getId();
 		}
 
 		// render the container element
@@ -113,15 +111,15 @@ class Highcharts extends \yii\base\Widget
 		}
 
 		// merge options with default values
-		$defaultOptions = ['chart' => ['renderTo' => $id]];
+		$defaultOptions = ['chart' => ['renderTo' => $this->id]];
 		$this->options = ArrayHelper::merge($defaultOptions, $this->options);
 		array_unshift($this->scripts, $this->baseScript);
-		
+
 		$this->registerAssets();
-		
+
 		parent::run();
 	}
-	
+
 	/**
 	 * Registers required assets and the executing code block with the view
 	 */
@@ -134,7 +132,7 @@ class Highcharts extends \yii\base\Widget
 		$jsOptions = Json::encode($this->options);
 		$setupOptions = Json::encode($this->setupOptions);
 		$js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->constr}($jsOptions);";
-		$key = __CLASS__ . '#' . $id;
+		$key = __CLASS__ . '#' . $this->id;
 		$this->view->registerJs($js, View::POS_LOAD, $key);
 	}
 

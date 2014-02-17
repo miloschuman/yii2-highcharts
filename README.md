@@ -27,7 +27,7 @@ to the require section of your `composer.json` file.
 Usage
 -----
 
-To use this widget, you may insert the following code into a view file:
+To use this widget, insert the following code into a view file:
 ```php
 use miloschuman\highcharts\Highcharts;
 
@@ -47,7 +47,7 @@ echo Highcharts::widget([
    ]
 ]);
 ```
-By configuring the `options` property, you may specify the options that need to be passed to the Highcharts JavaScript object. Please refer to the demo gallery and documentation on the [Highcharts website](http://www.highcharts.com/) for possible options.
+By configuring the `options` property, you can specify the options that need to be passed to the Highcharts JavaScript object. Please refer to the demo gallery and documentation on the [Highcharts website](http://www.highcharts.com/) for possible options.
 
 Alternatively, you can use a valid JSON string in place of an associative array to specify options:
 ```php
@@ -79,7 +79,7 @@ Tips
   ```php
   ...
   'tooltip' => [
-       'formatter' => new JsExpression('function(){ return this.series.name; }')
+     'formatter' => new JsExpression('function(){ return this.series.name; }')
   ],
   ...
   ```
@@ -96,12 +96,17 @@ Tips
   ```php
   ...
   'scripts' => [
-       'highcharts-more',   // enables supplementary chart types (gauge, arearange, columnrange, etc.)
-       'modules/exporting', // adds Exporting button/menu to chart
-       'themes/grid'        // applies global 'grid' theme to all charts
+     'highcharts-more',   // enables supplementary chart types (gauge, arearange, columnrange, etc.)
+     'modules/exporting', // adds Exporting button/menu to chart
+     'themes/grid'        // applies global 'grid' theme to all charts
   ],
   ...
   ```
-  Previous versions relied on auto-detection magic, but that became less reliable as Highcharts evolved. The new method
-  more accurately follows the native process of including/excluding additional script files and gives the user some finer-grain control.
   For a list of available scripts, see the contents of `vendor/miloschuman/highcharts/assets/`.
+
+
+Change Log
+----------
+
+### [v3.0.9](https://github.com/miloschuman/yii2-highcharts-widget/releases/tag/v3.0.9) (2014 February 17) ###
+* Upgraded Highcharts core library to the latest release (3.0.9). See the Highcharts [changelog](http://highcharts.com/documentation/changelog "Changelog") for more information about what's new in this version.

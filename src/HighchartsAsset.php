@@ -19,50 +19,41 @@ use yii\web\AssetBundle;
 class HighchartsAsset extends AssetBundle
 {
 
-	public $sourcePath = '@vendor/miloschuman/yii2-highcharts-widget/assets';
-	public $depends = [
-		'yii\web\JqueryAsset',
-	];
+	public $sourcePath = '@vendor/miloschuman/yii2-highcharts-widget/src/assets';
+	public $depends = ['yii\web\JqueryAsset'];
 
 	/**
-	 * inheritdoc
-	 */
-	public function init()
-	{
-		// Make sure highstock comes first. Otherwise, we get errors.
-		$ext = YII_DEBUG ? 'src.js' : 'js';
-		$hasHighcharts = in_array("highcharts.$ext", $this->js);
-		$hasHighstock = in_array("highstock.$ext", $this->js);
-		
-		if(!hasHighcharts && !$hasHighstock) {
-			array_unshift($this->js, "highcharts.$ext");
-		} else {
-			if($hasHighcharts) {
-				array_unshift($this->js, "highcharts.$ext");
-			}
-			if($hasHighstock) {
-				array_unshift($this->js, "highstock.$ext");
-			}
-		}
-		
-//		if(in_array("highcharts.$ext", $this->js)) {
-//			array_unshift($this->js, "highcharts.$ext");
-//		}
-		parent::init();
-	}
-
-	/**
-	 * Registers additional JavaScript files required by the widget. 
+	 * Registers additional JavaScript files required by the widget.
+	 * 
 	 * @param array $scripts list of additional JavaScript files to register.
+	 * @return $this
 	 */
 	public function withScripts($scripts = ['highcharts'])
 	{
+		// use unminified files when in debug mode
+		$ext = YII_DEBUG ? 'src.js' : 'js';
+
+		// add files
 		foreach ($scripts as $script) {
-			$js = YII_DEBUG ? "$script.src.js" : "$script.js";
-			if (!in_array($js, $this->js)) {
-				$this->js[] = $js;
+			$this->js[] = "$script.$ext";
+		}
+
+		// make sure that at either the highcharts or highstock base file is
+		// included. If both are included, make sure that highstock comes first.
+		$hasHighcharts = in_array("highcharts.$ext", $this->js);
+		$hasHighstock = in_array("highstock.$ext", $this->js);
+		if (!$hasHighcharts && !$hasHighstock) {
+			array_unshift($this->js, "highcharts.$ext");
+		} else {
+			if ($hasHighcharts) {
+				array_unshift($this->js, "highcharts.$ext");
+			}
+			if ($hasHighstock) {
+				array_unshift($this->js, "highstock.$ext");
 			}
 		}
+
+		return $this;
 	}
 
 }
