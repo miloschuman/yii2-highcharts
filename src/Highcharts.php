@@ -6,7 +6,7 @@
  * @author Milo Schuman <miloschuman@gmail.com>
  * @link https://github.com/miloschuman/yii-highcharts/
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
- * @version 3.0.5
+ * @version 3.0.9
  */
 
 namespace miloschuman\highcharts;
@@ -86,10 +86,10 @@ class Highcharts extends \yii\base\Widget
 	protected $constr = 'Chart';
 	protected $baseScript = 'highcharts';
 	
-	public $options = array();
-	public $htmlOptions = array();
-	public $setupOptions = array();
-	public $scripts = array();
+	public $options = [];
+	public $htmlOptions = [];
+	public $setupOptions = [];
+	public $scripts = [];
 
 
 	/**
@@ -116,52 +116,26 @@ class Highcharts extends \yii\base\Widget
 		$defaultOptions = ['chart' => ['renderTo' => $id]];
 		$this->options = ArrayHelper::merge($defaultOptions, $this->options);
 		array_unshift($this->scripts, $this->baseScript);
-
-		// prepare script
-		$jsOptions = Json::encode($this->options);
-		$setupOptions = Json::encode($this->setupOptions);
-		$js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->constr}($jsOptions);";
-		$key = __CLASS__ . '#' . $id;
 		
-		HighchartsAsset::register($this->view);
-		$this->view->registerJs($js, View::POS_LOAD, $key);
+		$this->registerAssets();
 		
 		parent::run();
 	}
 	
 	/**
-	 * Registers the needed assets
+	 * Registers required assets and the executing code block with the view
 	 */
-	public function registerAssets()
+	protected function registerAssets()
 	{
-		
-	}
+		// register the necessary assets
+		HighchartsAsset::register($this->view)->withScripts($this->scripts);
 
-
-	/**
-	 * Publishes and registers the necessary script files.
-	 *
-	 * @param string the id of the script to be inserted into the page
-	 * @param string the embedded script to be inserted into the page
-	 */
-	protected function registerScripts($id, $embeddedScript)
-	{
-		$basePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR;
-		$baseUrl = Yii::app()->getAssetManager()->publish($basePath, false, 1, YII_DEBUG);
-
-		$cs = Yii::app()->clientScript;
-		$cs->registerCoreScript('jquery');
-
-		// register additional scripts
-		foreach ($this->scripts as $script) {
-			if (YII_DEBUG && file_exists(realpath("$basePath/$script.src.js"))) {
-				$cs->registerScriptFile("$baseUrl/$script.src.js");
-			} else {
-				$cs->registerScriptFile("$baseUrl/$script.js");
-			}
-		}
-
-		$cs->registerScript($id, $embeddedScript, CClientScript::POS_LOAD);
+		// prepare and register JavaScript code block
+		$jsOptions = Json::encode($this->options);
+		$setupOptions = Json::encode($this->setupOptions);
+		$js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->constr}($jsOptions);";
+		$key = __CLASS__ . '#' . $id;
+		$this->view->registerJs($js, View::POS_LOAD, $key);
 	}
 
 }

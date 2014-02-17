@@ -74,33 +74,34 @@ Highcharts::widget([
 Tips
 ----
 
-* If you need to use JavaScript in any of your configuration options (e.g. inline functions), use the `js:` prefix. For instance:
+* If you need to use JavaScript in any of your configuration options (e.g. inline functions), use Yii's [[JsExpression]] object. For instance:
 
   ```php
   ...
-  'tooltip' => array(
-       'formatter' => 'js:function(){ return this.series.name; }'
-  ),
+  'tooltip' => [
+       'formatter' => new JsExpression('function(){ return this.series.name; }')
+  ],
   ...
   ```
+  Note, this is currently only possible when using a PHP associative array for configuration.
 * Highcharts by default displays a small credits label in the lower right corner of the chart. This can be removed using the following top-level option.
 
   ```php
   ...
-  'credits' => array('enabled' => false),
+  'credits' => ['enabled' => false],
   ...
   ```
-* Since version 3.0.2, all adapters, modules, themes, and supplementary chart types must be enabled through the top-level 'scripts' option.
+* All adapters, modules, themes, and supplementary chart types must be enabled through the top-level 'scripts' option.
 
   ```php
   ...
-  'scripts' => array(
+  'scripts' => [
        'highcharts-more',   // enables supplementary chart types (gauge, arearange, columnrange, etc.)
        'modules/exporting', // adds Exporting button/menu to chart
        'themes/grid'        // applies global 'grid' theme to all charts
-  ),
+  ],
   ...
   ```
   Previous versions relied on auto-detection magic, but that became less reliable as Highcharts evolved. The new method
   more accurately follows the native process of including/excluding additional script files and gives the user some finer-grain control.
-  For a list of available scripts, see the contents of `protected/extensions/highcharts/assets/`.
+  For a list of available scripts, see the contents of `vendor/miloschuman/highcharts/assets/`.

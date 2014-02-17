@@ -1,5 +1,5 @@
 /*
- Highstock JS v1.3.9 (2014-01-15)
+ Highcharts JS v3.0.9 (2014-01-15)
  Exporting module
 
  (c) 2010-2014 Torstein Honsi

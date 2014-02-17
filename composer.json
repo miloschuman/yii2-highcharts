@@ -16,7 +16,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"miloschuman\\highcharts\\": ""
+			"miloschuman\\highcharts\\": "src/"
 		}
 	}
 }
