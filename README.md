@@ -1,7 +1,7 @@
 yii2-highcharts-widget
 ======================
 
-Highcharts widget for Yii 2 Framework
+Highcharts widget for Yii 2
 
 
 Installation
@@ -12,13 +12,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist miloschuman/yii2-highcharts-widget "*"
+php composer.phar require --prefer-dist miloschuman/yii2-highcharts-widget "dev-master"
 ```
 
 or add
 
 ```
-"miloschuman/yii2-highcharts-widget": "*"
+"miloschuman/yii2-highcharts-widget": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
@@ -26,6 +26,8 @@ to the require section of your `composer.json` file.
 
 Usage
 -----
+
+### Preferred Method (using PHP arrays) ###
 
 To use this widget, insert the following code into a view file:
 ```php
@@ -49,6 +51,8 @@ echo Highcharts::widget([
 ```
 By configuring the `options` property, you can specify the options that need to be passed to the Highcharts JavaScript object. Please refer to the demo gallery and documentation on the [Highcharts website](http://www.highcharts.com/) for possible options.
 
+### Alternative Method (using JSON string) ###
+
 Alternatively, you can use a valid JSON string in place of an associative array to specify options:
 ```php
 Highcharts::widget([
@@ -70,6 +74,17 @@ Highcharts::widget([
 
 *Note:* You must provide a *valid* JSON string (e.g. double quotes) when using the second option. You can quickly validate your JSON string online using [JSONLint](http://jsonlint.com/).
 
+### Just the Assets ###
+
+If you merely want to include the Highcharts/Highstock javascript libraries in your view, you can bypass the widget and access the asset bundle directly:
+
+```php
+use miloschuman\highcharts\HighchartsAsset;
+
+HighchartsAsset::register($this)->withScripts('highstock', 'modules/exporting', 'modules/drilldown');
+```
+
+In this scenario, you would need to write and include your own JavaScript to display the charts, just as illustrated in the [Highcharts Demo](http://www.highcharts.com/demo) and [Highstock Demo](http://www.highcharts.com/stock/demo) pages.
 
 Tips
 ----
@@ -83,7 +98,7 @@ Tips
   ],
   ...
   ```
-  Note, this is currently only possible when using a PHP associative array for configuration.
+  Note, this is currently only possible when using a PHP associative array ([Preferred Method](#preferred-method-using-php-arrays)) for configuration.
 * Highcharts by default displays a small credits label in the lower right corner of the chart. This can be removed using the following top-level option.
 
   ```php
@@ -108,5 +123,8 @@ Tips
 Change Log
 ----------
 
-### [v3.0.9](https://github.com/miloschuman/yii2-highcharts-widget/releases/tag/v3.0.9) (2014 February 17) ###
-* Upgraded Highcharts core library to the latest release (3.0.9). See the Highcharts [changelog](http://highcharts.com/documentation/changelog "Changelog") for more information about what's new in this version.
+### [v3.0.10](https://github.com/miloschuman/yii2-highcharts-widget/releases/tag/v3.0.10) (2014-03-17) ###
+* Upgraded Highcharts core library to the latest release (3.0.10). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+
+### [v3.0.9](https://github.com/miloschuman/yii2-highcharts-widget/releases/tag/v3.0.9) (2014-02-17) ###
+* Upgraded Highcharts core library to the latest release (3.0.9).
