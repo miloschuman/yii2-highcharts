@@ -1,7 +1,14 @@
-yii2-highcharts-widget
+Yii2 Highcharts Widget
 ======================
 
-Highcharts widget for Yii 2
+[![Latest Stable Version](https://poser.pugx.org/miloschuman/yii2-highcharts-widget/v/stable.png)](https://packagist.org/packages/miloschuman/yii2-highcharts-widget)
+[![Total Downloads](https://poser.pugx.org/miloschuman/yii2-highcharts-widget/downloads.png)](https://packagist.org/packages/miloschuman/yii2-highcharts-widget)
+[![License](https://poser.pugx.org/miloschuman/yii2-highcharts-widget/license.png)](https://packagist.org/packages/miloschuman/yii2-highcharts-widget)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/miloschuman/yii2-highcharts-widget/badges/quality-score.png?s=cbb3ef746c21cd8a9f98bd91328fb317fee7e1d6)](https://scrutinizer-ci.com/g/miloschuman/yii2-highcharts-widget/)
+
+Easily add [Highcharts and Highstock](http://www.highcharts.com/) graphs to your Yii2 application.
+
+![Screen Shot](http://www.yiiframework.com/extension/yii2-highcharts-widget/files/screenshot.png)
 
 
 Installation

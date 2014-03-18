@@ -12,7 +12,7 @@
 		}
 	],
 	"require": {
-		"yiisoft/yii2": "*"
+		"yiisoft/yii2": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {

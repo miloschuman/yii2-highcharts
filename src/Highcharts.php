@@ -135,5 +135,4 @@ class Highcharts extends \yii\base\Widget
 		$key = __CLASS__ . '#' . $this->id;
 		$this->view->registerJs($js, View::POS_LOAD, $key);
 	}
-
 }
