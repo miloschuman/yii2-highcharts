@@ -11,6 +11,7 @@
 			"email": "miloschuman@gmail.com"
 		}
 	],
+	"minimum-stability": "dev",
 	"require": {
 		"yiisoft/yii2": "dev-master"
 	},
