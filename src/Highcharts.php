@@ -6,17 +6,17 @@
  * @author Milo Schuman <miloschuman@gmail.com>
  * @link https://github.com/miloschuman/yii-highcharts/
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
- * @version 3.0.10
+ * @version 4.0.1
  */
 
 namespace miloschuman\highcharts;
 
-use Yii;
+use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\View;
-use yii\web\JsExpression;
+use Yii;
 
 /**
  * Highcharts encapsulates the {@link http://www.highcharts.com/ Highcharts}
@@ -25,7 +25,7 @@ use yii\web\JsExpression;
  * To use this widget, you may insert the following code in a view:
  * ~~~
  * use miloschuman\highcharts\Highcharts;
- * 
+ *
  * Highcharts::widget([
  *    'options' => [
  *       'title' => ['text' => 'Fruit Consumption'],
@@ -53,7 +53,7 @@ use yii\web\JsExpression;
  *
  * ~~~
  * use miloschuman\highcharts\Highcharts;
- * 
+ *
  *  Highcharts::widget([
  *    'options'=>'{
  *       "title": { "text": "Fruit Consumption" },
@@ -80,59 +80,58 @@ use yii\web\JsExpression;
  * automatically populated with the id of the widget's container element. If you
  * wish to use a different container, feel free to specify a custom value.
  */
-class Highcharts extends \yii\base\Widget
+class Highcharts extends Widget
 {
+    protected $constr = 'Chart';
+    protected $baseScript = 'highcharts';
+    public $options = [];
+    public $htmlOptions = [];
+    public $setupOptions = [];
+    public $scripts = [];
 
-	protected $constr = 'Chart';
-	protected $baseScript = 'highcharts';
-	public $options = [];
-	public $htmlOptions = [];
-	public $setupOptions = [];
-	public $scripts = [];
+    /**
+     * Renders the widget.
+     */
+    public function run()
+    {
+        // determine the ID of the container element
+        if (isset($this->htmlOptions['id'])) {
+            $this->id = $this->htmlOptions['id'];
+        } else {
+            $this->id = $this->htmlOptions['id'] = $this->getId();
+        }
 
-	/**
-	 * Renders the widget.
-	 */
-	public function run()
-	{
-		// determine the ID of the container element
-		if (isset($this->htmlOptions['id'])) {
-			$this->id = $this->htmlOptions['id'];
-		} else {
-			$this->id = $this->htmlOptions['id'] = $this->getId();
-		}
+        // render the container element
+        echo Html::tag('div', '', $this->htmlOptions);
 
-		// render the container element
-		echo Html::tag('div', '', $this->htmlOptions);
+        // check if options parameter is a json string
+        if (is_string($this->options)) {
+            $this->options = Json::decode($this->options);
+        }
 
-		// check if options parameter is a json string
-		if (is_string($this->options)) {
-			$this->options = Json::decode($this->options);
-		}
+        // merge options with default values
+        $defaultOptions = ['chart' => ['renderTo' => $this->id]];
+        $this->options = ArrayHelper::merge($defaultOptions, $this->options);
+        array_unshift($this->scripts, $this->baseScript);
 
-		// merge options with default values
-		$defaultOptions = ['chart' => ['renderTo' => $this->id]];
-		$this->options = ArrayHelper::merge($defaultOptions, $this->options);
-		array_unshift($this->scripts, $this->baseScript);
+        $this->registerAssets();
 
-		$this->registerAssets();
+        parent::run();
+    }
 
-		parent::run();
-	}
+    /**
+     * Registers required assets and the executing code block with the view
+     */
+    protected function registerAssets()
+    {
+        // register the necessary assets
+        HighchartsAsset::register($this->view)->withScripts($this->scripts);
 
-	/**
-	 * Registers required assets and the executing code block with the view
-	 */
-	protected function registerAssets()
-	{
-		// register the necessary assets
-		HighchartsAsset::register($this->view)->withScripts($this->scripts);
-
-		// prepare and register JavaScript code block
-		$jsOptions = Json::encode($this->options);
-		$setupOptions = Json::encode($this->setupOptions);
-		$js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->constr}($jsOptions);";
-		$key = __CLASS__ . '#' . $this->id;
-		$this->view->registerJs($js, View::POS_LOAD, $key);
-	}
+        // prepare and register JavaScript code block
+        $jsOptions = Json::encode($this->options);
+        $setupOptions = Json::encode($this->setupOptions);
+        $js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->constr}($jsOptions);";
+        $key = __CLASS__ . '#' . $this->id;
+        $this->view->registerJs($js, View::POS_LOAD, $key);
+    }
 }

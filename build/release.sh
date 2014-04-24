@@ -41,7 +41,7 @@ vomit "Updating Version Identifiers"
 cd ..
 sed -i -r "s/@version [0-9\.]+/@version $ver/" *.php
 cd ..
-sed -i -r "s/ See the Highcharts \[changelog\]\(http:\/\/highcharts.com\/documentation\/changelog) for more information about what's new in this version.//" README.md
+sed -i -r "s/ See the Highcharts \[changelog\]\(http:\/\/highcharts.com\/documentation\/changelog\) for more information about what's new in this version.//" README.md
 now=$(date +"%F")
 sed -i "/^----------$/ a\\
 \\

@@ -1,1 +1,5 @@
-/nbproject/
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
