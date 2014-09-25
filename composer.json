@@ -1,8 +1,8 @@
 {
 	"name": "miloschuman/yii2-highcharts-widget",
 	"description": "Highcharts widget for Yii 2 Framework.",
-	"keywords": ["yii2", "extension", "widget", "highcharts", "highstock"],
-	"homepage": "https://github.com/miloschuman/yii2-highcharts-widget",
+	"keywords": ["yii2", "extension", "widget", "highcharts", "highstock", "highmaps"],
+	"homepage": "https://github.com/miloschuman/yii2-highcharts",
 	"type": "yii2-extension",
 	"license": "MIT",
 	"authors": [

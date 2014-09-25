@@ -4,9 +4,9 @@
  * HighchartsAsset class file.
  *
  * @author Milo Schuman <miloschuman@gmail.com>
- * @link https://github.com/miloschuman/yii2-highcharts-widget/
+ * @link https://github.com/miloschuman/yii2-highcharts/
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
- * @version 4.0.1
+ * @version 4.0.4
  */
 
 namespace miloschuman\highcharts;
@@ -38,19 +38,13 @@ class HighchartsAsset extends AssetBundle
             $this->js[] = "$script.$ext";
         }
 
-        // make sure that at either the highcharts or highstock base file is
-        // included. If both are included, make sure that highstock comes first.
-        $hasHighcharts = in_array("highcharts.$ext", $this->js);
+        // make sure that either highcharts or highstock base file is included.
+        array_unshift($this->js, "highcharts.$ext");
         $hasHighstock = in_array("highstock.$ext", $this->js);
-        if (!$hasHighcharts && !$hasHighstock) {
-            array_unshift($this->js, "highcharts.$ext");
-        } else {
-            if ($hasHighcharts) {
-                array_unshift($this->js, "highcharts.$ext");
-            }
-            if ($hasHighstock) {
-                array_unshift($this->js, "highstock.$ext");
-            }
+        if ($hasHighstock) {
+            array_unshift($this->js, "highstock.$ext");
+            // remove highcharts if highstock is used on page
+            $this->js = array_diff($this->js, ["highcharts.$ext"]);
         }
 
         return $this;

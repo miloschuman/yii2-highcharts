@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Highstock class file.
+ * Highmaps class file.
  *
  * @author Milo Schuman <miloschuman@gmail.com>
  * @link https://github.com/miloschuman/yii2-highcharts/
@@ -14,9 +14,9 @@ namespace miloschuman\highcharts;
 /**
  * @see Highcharts
  */
-class Highstock extends Highcharts
+class Highmaps extends Highcharts
 {
 
-    protected $constr = 'StockChart';
-    protected $baseScript = 'highstock';
+    protected $constr = 'Map';
+    protected $baseScript = 'modules/map';
 }

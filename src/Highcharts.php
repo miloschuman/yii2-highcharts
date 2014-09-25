@@ -6,7 +6,7 @@
  * @author Milo Schuman <miloschuman@gmail.com>
  * @link https://github.com/miloschuman/yii-highcharts/
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
- * @version 4.0.1
+ * @version 4.0.4
  */
 
 namespace miloschuman\highcharts;
@@ -88,6 +88,7 @@ class Highcharts extends Widget
     public $htmlOptions = [];
     public $setupOptions = [];
     public $scripts = [];
+    public $callback = false;
 
     /**
      * Renders the widget.
@@ -132,6 +133,11 @@ class Highcharts extends Widget
         $setupOptions = Json::encode($this->setupOptions);
         $js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->constr}($jsOptions);";
         $key = __CLASS__ . '#' . $this->id;
-        $this->view->registerJs($js, View::POS_LOAD, $key);
+        if (is_string($this->callback)) {
+            $callbackScript = "function {$this->callback}(data) {{$js}}";
+            $this->view->registerJs($callbackScript, View::POS_READY, $key);
+        } else {
+            $this->view->registerJs($js, View::POS_LOAD, $key);
+        }
     }
 }
