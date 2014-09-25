@@ -8,7 +8,7 @@ Yii2 Highcharts Widget
 
 Easily add [Highcharts, Highstock and Highmaps](http://www.highcharts.com/) graphs to your Yii2 application.
 
-![Screen Shot](http://www.yiiframework.com/extension/yii2-highcharts/files/screenshot.png)
+![Screen Shot](http://www.yiiframework.com/extension/yii2-highcharts-widget/files/screenshot.png)
 
 
 About
@@ -69,6 +69,7 @@ echo Highcharts::widget([
    ]
 ]);
 ```
+
 By configuring the `options` property, you can specify the options that need to be passed to the Highcharts JavaScript object. Please refer to the demo gallery and documentation on the [Highcharts website](http://www.highcharts.com/) for possible options.
 
 See [/doc/examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples) for more usage examples.
@@ -106,7 +107,7 @@ use miloschuman\highcharts\HighchartsAsset;
 HighchartsAsset::register($this)->withScripts(['highstock', 'modules/exporting', 'modules/drilldown']);
 ```
 
-In this scenario, you would need to write and include your own JavaScript to display the charts, just as illustrated in the [Highcharts Demo](http://www.highcharts.com/demo) and [Highstock Demo](http://www.highcharts.com/stock/demo) pages.
+In this scenario, you would need to write and include your own JavaScript to display the charts, just as illustrated in the [Highcharts Demo](http://www.highcharts.com/demo), [Highstock Demo](http://www.highcharts.com/stock/demo) and [Highmaps Demo](http://www.highcharts.com/maps/demo) pages.
 
 
 Tips
