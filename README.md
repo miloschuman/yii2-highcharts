@@ -14,13 +14,13 @@ Easily add [Highcharts, Highstock and Highmaps](http://www.highcharts.com/) grap
 About
 -----
 
-## Highcharts ##
+### Highcharts ###
 > Create interactive charts easily for your web projects. Used by tens of thousands of developers and 59 out of the world's 100 largest companies, Highcharts is the simplest yet most flexible charting API on the market.
 
-## Highstock ##
+### Highstock ###
 > Highstock lets you create stock or general timeline charts in pure JavaScript. Including sophisticated navigation options like a small navigator series, preset date ranges, date picker, scrolling and panning.
 
-## Highmaps ##
+### Highmaps ###
 > Build interactive maps to display sales, election results or any other information linked to geography. Perfect for standalone use or in dashboards in combination with Highcharts!
 
 
