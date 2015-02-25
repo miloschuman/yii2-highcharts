@@ -129,7 +129,7 @@ class Highcharts extends Widget
         HighchartsAsset::register($this->view)->withScripts($this->scripts);
 
         // prepare and register JavaScript code block
-        $jsOptions = Json::encode($this->options);
+        $jsOptions = Json::encode($this->options, JSON_NUMERIC_CHECK);
         $setupOptions = Json::encode($this->setupOptions);
         $js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->constr}($jsOptions);";
         $key = __CLASS__ . '#' . $this->id;
