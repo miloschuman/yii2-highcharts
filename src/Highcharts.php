@@ -84,6 +84,7 @@ class Highcharts extends Widget
 {
     protected $constr = 'Chart';
     protected $baseScript = 'highcharts';
+    public $varName = 'chart';
     public $options = [];
     public $htmlOptions = [];
     public $setupOptions = [];
@@ -129,9 +130,9 @@ class Highcharts extends Widget
         HighchartsAsset::register($this->view)->withScripts($this->scripts);
 
         // prepare and register JavaScript code block
-        $jsOptions = Json::encode($this->options);
+        $jsOptions = Json::encode($this->options, JSON_NUMERIC_CHECK);
         $setupOptions = Json::encode($this->setupOptions);
-        $js = "Highcharts.setOptions($setupOptions); var chart = new Highcharts.{$this->constr}($jsOptions);";
+        $js = "Highcharts.setOptions($setupOptions); var {$this->varName} = new Highcharts.{$this->constr}($jsOptions);";
         $key = __CLASS__ . '#' . $this->id;
         if (is_string($this->callback)) {
             $callbackScript = "function {$this->callback}(data) {{$js}}";
