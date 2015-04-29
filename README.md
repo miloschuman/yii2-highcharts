@@ -143,7 +143,8 @@ Tips
   ```
   For a list of available scripts, see the contents of `vendor/miloschuman/yii2-highcharts-widget/src/assets/`.
 * You can access the JavaScript chart object from another script like this:
-  ```js
+
+  ```javascript
   var chart = $('#my-chart-id').highcharts();
   ```
   where `my-chart-id` is set via the top-level `id` configuration option. Just make sure you
