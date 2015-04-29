@@ -142,13 +142,23 @@ Tips
   ...
   ```
   For a list of available scripts, see the contents of `vendor/miloschuman/yii2-highcharts-widget/src/assets/`.
+* You can access the JavaScript chart object from another script like this:
+  ```js
+  var chart = $('#my-chart-id').highcharts();
+  ```
+  where `my-chart-id` is set via the top-level `id` configuration option. Just make sure you
+  register your script after the widget declaration so that it has a chance to initialize.
 
 
 Change Log
 ----------
+### [v4.1.5](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.1.5) (2015-04-29) ###
+* Upgraded Highcharts core library to the latest release (4.1.5). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+* Added SeriesDataHelper class to to make preprocessing data easier. See included [SeriesDataHelper Examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/series-data-helper.md) for usage.
+* Chart objects are no longer assigned to the generic `chart` variable on initialization. See [Tips](#tips) above for info on accessing your charts from other scripts.
 
 ### [v4.0.4](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.0.4) (2014-09-25) ###
-* Upgraded Highcharts core library to the latest release (4.0.4). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version. 
+* Upgraded Highcharts core library to the latest release (4.0.4). 
 * Added usage examples in [/doc/examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples).
 * Added HighmapsWidget. See included [Highmaps Widget Example](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/highmaps.md) for usage.
 * Added callback option to make AJAX loading easier. See included [Highstock Widget Example](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/highstock.md) for usage.
