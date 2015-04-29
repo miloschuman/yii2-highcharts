@@ -55,6 +55,8 @@ class Highcharts extends Widget
 
     protected $constr = 'Chart';
     protected $baseScript = 'highcharts';
+    public $options = [];
+    public $htmlOptions = [];
     public $setupOptions = [];
     public $scripts = [];
     public $callback = false;
