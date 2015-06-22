@@ -153,8 +153,12 @@ Tips
 
 Change Log
 ----------
+### [v4.1.6](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.1.6) (2015-06-22) ###
+* Upgraded Highcharts core library to the latest release (4.1.6). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+* Fixed issue #8.
+
 ### [v4.1.5](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.1.5) (2015-04-29) ###
-* Upgraded Highcharts core library to the latest release (4.1.5). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+* Upgraded Highcharts core library to the latest release (4.1.5).
 * Added SeriesDataHelper class to to make preprocessing data easier. See included [SeriesDataHelper Examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/series-data-helper.md) for usage.
 * Chart objects are no longer assigned to the generic `chart` variable on initialization. See [Tips](#tips) above for info on accessing your charts from other scripts.
 
