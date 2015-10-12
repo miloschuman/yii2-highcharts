@@ -1,5 +1,5 @@
 /**
- * @license Highmaps JS v1.1.8 (2015-08-20)
+ * @license Highmaps JS v1.1.9 (2015-10-07)
  * Highmaps as a plugin for Highcharts 4.1.x or Highstock 2.1.x (x being the patch version of this file)
  *
  * (c) 2011-2014 Torstein Honsi
@@ -368,20 +368,23 @@ extend(ColorAxis.prototype, {
 		return color;
 	},
 
+	/**
+	 * Override the getOffset method to add the whole axis groups inside the legend.
+	 */
 	getOffset: function () {
 		var group = this.legendGroup,
 			sideOffset = this.chart.axisOffset[this.side];
 		
 		if (group) {
 
-			Axis.prototype.getOffset.call(this);
-			
-			if (!this.axisGroup.parentGroup) {
+			// Hook for the getOffset method to add groups to this parent group
+			this.axisParent = group;
 
-				// Move the axis elements inside the legend group
-				this.axisGroup.add(group);
-				this.gridGroup.add(group);
-				this.labelGroup.add(group);
+			// Call the base
+			Axis.prototype.getOffset.call(this);
+
+			// First time only
+			if (!this.added) {
 
 				this.added = true;
 
@@ -709,8 +712,20 @@ extend(Chart.prototype, {
 			buttonOptions,
 			attr,
 			states,
-			outerHandler = function () { 
-				this.handler.call(chart); 
+			stopEvent = function (e) {
+				if (e) {
+					if (e.preventDefault) {
+						e.preventDefault();
+					}
+					if (e.stopPropagation) {
+						e.stopPropagation();
+					}
+					e.cancelBubble = true;
+				}
+			},
+			outerHandler = function (e) {
+				this.handler.call(chart, e);
+				stopEvent(e); // Stop default click event (#4444)
 			};
 
 		if (pick(options.enableButtons, options.enabled) && !chart.renderer.forExport) {
@@ -740,6 +755,7 @@ extend(Chart.prototype, {
 						.add();
 					button.handler = buttonOptions.onclick;
 					button.align(extend(buttonOptions, { width: button.width, height: 2 * button.height }), null, buttonOptions.alignTo);
+					addEvent(button.element, 'dblclick', stopEvent); // Stop double click event (#4444)
 				}
 			}
 		}
@@ -1445,7 +1461,7 @@ seriesTypes.map = extendClass(seriesTypes.scatter, merge(colorSeriesMixin, {
 
 					// Reset color on update/redraw
 					if (point.shapeArgs) {
-						point.shapeArgs.fill = point.color;
+						point.shapeArgs.fill = point.pointAttr[pick(point.state, '')].fill; // #3529
 					}
 				});
 			}
@@ -1811,17 +1827,20 @@ seriesTypes.heatmap = extendClass(seriesTypes.scatter, merge(colorSeriesMixin, {
 		var series = this,
 			options = series.options,
 			xAxis = series.xAxis,
-			yAxis = series.yAxis;
+			yAxis = series.yAxis,
+			between = function (x, a, b) {
+				return Math.min(Math.max(a, x), b);
+			};
 
 		series.generatePoints();
 
 		each(series.points, function (point) {
 			var xPad = (options.colsize || 1) / 2,
 				yPad = (options.rowsize || 1) / 2,
-				x1 = Math.round(xAxis.len - xAxis.translate(point.x - xPad, 0, 1, 0, 1)),
-				x2 = Math.round(xAxis.len - xAxis.translate(point.x + xPad, 0, 1, 0, 1)),
-				y1 = Math.round(yAxis.translate(point.y - yPad, 0, 1, 0, 1)),
-				y2 = Math.round(yAxis.translate(point.y + yPad, 0, 1, 0, 1));
+				x1 = between(Math.round(xAxis.len - xAxis.translate(point.x - xPad, 0, 1, 0, 1)), 0, xAxis.len),
+				x2 = between(Math.round(xAxis.len - xAxis.translate(point.x + xPad, 0, 1, 0, 1)), 0, xAxis.len),
+				y1 = between(Math.round(yAxis.translate(point.y - yPad, 0, 1, 0, 1)), 0, yAxis.len),
+				y2 = between(Math.round(yAxis.translate(point.y + yPad, 0, 1, 0, 1)), 0, yAxis.len);
 
 			// Set plotX and plotY for use in K-D-Tree and more
 			point.plotX = point.clientX = (x1 + x2) / 2;

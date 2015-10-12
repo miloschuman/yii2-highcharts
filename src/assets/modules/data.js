@@ -1,5 +1,5 @@
 /*
- Highmaps JS v1.1.8 (2015-08-20)
+ Highmaps JS v1.1.9 (2015-10-07)
  Data module
 
  (c) 2012-2014 Torstein Honsi
