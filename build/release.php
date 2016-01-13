@@ -39,9 +39,9 @@ rm -rfv $dir/*
 wget http://code.highcharts.com/zips/Highcharts-$ver.zip
 wget http://code.highcharts.com/zips/Highstock-$stockVer.zip
 wget http://code.highcharts.com/zips/Highmaps-$mapsVer.zip
-unzip Highmaps-$mapsVer.zip js/\*
-unzip Highstock-$stockVer.zip js/\*
 unzip Highcharts-$ver.zip js/\*
+unzip -n Highstock-$stockVer.zip js/\*
+unzip -n Highmaps-$mapsVer.zip js/\*
 mv js/* .
 rmdir js
 rm *.zip
