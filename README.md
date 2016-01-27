@@ -149,7 +149,8 @@ Tips
   ```
   where `my-chart-id` is set via the top-level `id` configuration option. Just make sure you
   register your script after the widget declaration so that it has a chance to initialize.
-
+* The top-level `'callback'` option allows you to initialize the chart after an AJAX request or other preprocessing.
+  See included [Highstock Widget Examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/highstock.md) for usage.
 
 Change Log
 ----------
