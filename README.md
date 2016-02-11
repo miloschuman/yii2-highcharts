@@ -155,8 +155,11 @@ Tips
 Change Log
 ----------
 
+### [v4.2.3](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.2.3) (2016-02-11) ###
+* Upgraded Highcharts core library to the latest release (4.2.3). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+
 ### [v4.2.2](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.2.2) (2016-02-04) ###
-* Upgraded Highcharts core library to the latest release (4.2.2). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+* Upgraded Highcharts core library to the latest release (4.2.2).
 
 ### [v4.2.1](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.2.1) (2016-01-13) ###
 * Upgraded Highcharts core library to the latest release (4.2.1).
