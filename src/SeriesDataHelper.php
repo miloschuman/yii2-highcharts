@@ -177,8 +177,8 @@ class SeriesDataHelper extends Component implements JsonSerializable
         $data = [];
         foreach ($this->data->models as $model) {
             $row = [];
-            foreach ($this->columns as $column) {
-                $row[] = call_user_func($column[1], $model[$column[0]]);
+            foreach ($this->columns as $index => $column) {
+                $row[$index] = call_user_func($column[1], $model[$column[0]]);
             }
 
             $data[] = $row;
