@@ -4,4 +4,5 @@
 # netbeans project files
 nbproject
 
-vendor
+/vendor
+/composer.lock
