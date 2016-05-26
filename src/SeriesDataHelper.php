@@ -97,6 +97,7 @@ class SeriesDataHelper extends Component implements JsonSerializable
         } elseif (is_array($data)) {
             $this->data = new ArrayDataProvider([
                 'allModels' => $data,
+                'pagination' => ['pageSize' => 0],
             ]);
         } else {
             throw new InvalidParamException('Data must be an array or extend BaseDataProvider');
