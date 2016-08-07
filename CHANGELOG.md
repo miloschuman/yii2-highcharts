@@ -1,8 +1,11 @@
 Yii2 Highcharts Changelog
 =========================
 
+### [v4.2.6](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.2.6) (2016-08-07) ###
+* Upgraded Highcharts core library to the latest release (4.2.6). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+
 ### [v4.2.5](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.2.5) (2016-05-26) ###
-* Upgraded Highcharts core library to the latest release (4.2.5). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+* Upgraded Highcharts core library to the latest release (4.2.5).
 * Fixed #33: SeriesDataHelper does only return 20 datasets
 * Added travis.yml
 
