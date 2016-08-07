@@ -65,7 +65,7 @@ exclaim("Updating Changelog");
 $fileName = dirname(dirname(__FILE__)) . '/CHANGELOG.md';
 $changelogLink = " See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.";
 $changelogEntry = "### [v$ver](https://github.com/miloschuman/yii2-highcharts/releases/tag/v$ver) ($date) ###\n"
-    . "* Upgraded Highcharts core library to the latest release ($ver).$changelogLink";
+    . "* Upgraded Highcharts JS library to the latest release ($ver).$changelogLink";
 $contents = file_get_contents($fileName);
 $contents = str_replace($changelogLink, '', $contents);
 $contents = str_replace('=========================', "=========================\n\n$changelogEntry", $contents);
