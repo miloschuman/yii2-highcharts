@@ -14,7 +14,6 @@ function exclaim($msg)
 date_default_timezone_set('America/New_York');
 $date = date('Y-m-d');
 
-
 /* Get version number of latest releases */
 $products = file_get_contents('http://code.highcharts.com/products.js');
 preg_match_all('/\d\.\d+\.\d+/', $products, $matches);
@@ -42,22 +41,21 @@ rm -rfv $dir/*
 wget http://code.highcharts.com/zips/Highcharts-$ver.zip
 wget http://code.highcharts.com/zips/Highstock-$stockVer.zip
 wget http://code.highcharts.com/zips/Highmaps-$mapsVer.zip
-unzip Highcharts-$ver.zip js/\*
-unzip -n Highstock-$stockVer.zip js/\*
-unzip -n Highmaps-$mapsVer.zip js/\*
-mv js/* .
-rmdir js
+unzip Highcharts-$ver.zip code/\*
+unzip -n Highstock-$stockVer.zip code/\*
+unzip -n Highmaps-$mapsVer.zip code/\*
+mv code/* .
+rm -fr code/ js/ readme.txt
 rm *.zip
 `;
 
 exclaim("Purging extraneous assets");
 echo `rm -rfv parts* *debug* .htaccess`;
 
-
 exclaim("Creating missing src files");
 echo `
 for file in $(find . -name '*.js' ! -name '*.src.js'); do 
-     cp -nv "\$file" \${file%.js}.src.js
+    cp -nv "\$file" \${file%.js}.src.js
 done
 `;
 
@@ -70,7 +68,6 @@ $contents = file_get_contents($fileName);
 $contents = str_replace($changelogLink, '', $contents);
 $contents = str_replace('=========================', "=========================\n\n$changelogEntry", $contents);
 file_put_contents($fileName, $contents);
-
 
 exclaim("Done, bitch!");
 exclaim("Don't forget to UPDATE README.md!");
