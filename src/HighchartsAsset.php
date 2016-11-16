@@ -13,12 +13,11 @@ namespace miloschuman\highcharts;
 use yii\web\AssetBundle;
 
 /**
- * Asset bundle for Highcharts and Highstock widget.
+ * Asset bundle for Highcharts, Highstock, and Highmaps widgets.
  */
 class HighchartsAsset extends AssetBundle
 {
-
-    public $sourcePath = '@vendor/miloschuman/yii2-highcharts-widget/src/assets';
+    public $sourcePath = '@bower/highcharts';
     public $depends = ['yii\web\JqueryAsset'];
 
     /**
@@ -34,7 +33,8 @@ class HighchartsAsset extends AssetBundle
 
         // add files
         foreach ($scripts as $script) {
-            $this->js[] = "$script.$ext";
+            // theme files are not packaged with a .src.js version
+            $this->js[] = "$script." . ((strpos($script, 'themes/') === 0) ? 'js' : $ext);
         }
 
         // make sure that either highcharts or highstock base file is included.

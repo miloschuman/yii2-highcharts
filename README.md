@@ -140,7 +140,7 @@ Tips
   ],
   ...
   ```
-  For a list of available scripts, see the contents of `vendor/miloschuman/yii2-highcharts-widget/src/assets/`.
+  For a list of available scripts, see the contents of `vendor/bower/highcharts/`.
 * You can access the JavaScript chart object from another script like this:
 
   ```javascript

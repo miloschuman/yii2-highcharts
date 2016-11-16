@@ -4,6 +4,7 @@
 	"keywords": ["yii2", "extension", "widget", "highcharts", "highstock", "highmaps"],
 	"homepage": "https://github.com/miloschuman/yii2-highcharts",
 	"type": "yii2-extension",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Milo Schuman",
@@ -12,7 +13,8 @@
 	],
 	"minimum-stability": "dev",
 	"require": {
-		"yiisoft/yii2": "*"
+		"yiisoft/yii2": "*",
+        "bower-asset/highcharts" : "5.0.*"
 	},
     "require-dev": {
 		"phpunit/phpunit": "~4.4"
