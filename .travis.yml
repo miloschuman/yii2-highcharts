@@ -24,6 +24,7 @@ matrix:
 
 install:
   - travis_retry composer self-update
+  - travis_retry composer global require "fxp/composer-asset-plugin:^1.2.0"
   - travis_retry composer install --no-interaction --prefer-source --dev
 
 script:
