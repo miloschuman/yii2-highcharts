@@ -77,7 +77,9 @@ See [/doc/examples](https://github.com/miloschuman/yii2-highcharts/tree/master/d
 
 Alternatively, you can use a valid JSON string in place of an associative array to specify options:
 ```php
-Highcharts::widget([
+use miloschuman\highcharts\Highcharts;
+
+echo Highcharts::widget([
    'options'=>'{
       "title": { "text": "Fruit Consumption" },
       "xAxis": {
