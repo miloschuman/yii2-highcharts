@@ -59,6 +59,7 @@ class Highcharts extends Widget
     public $setupOptions = [];
     public $scripts = [];
     public $callback = false;
+    public $jsonJsSupport = false;
 
     /**
      * Renders the widget.
@@ -110,4 +111,30 @@ class Highcharts extends Widget
         $this->view->registerJs($js, View::POS_READY, $key);
     }
 
+    /**
+     * Generate json with the support javascript function
+     * @param $array
+     * @return mixed
+     */
+    protected function jsonEncode($array)
+    {
+        if($this->jsonJsSupport) {
+            return Json::encode($array);
+        }
+
+        $prefix = [
+            'start' => '68fqwnndYaRy9EpZ',
+            'end' => 'I0Revdf9HZXEvOCa',
+        ];
+
+        array_walk_recursive($array, function (&$item, $key, $prefix) {
+            if(preg_match('/^\s*(function.*\})\s*$/s', $item, $res)) {
+                $res = preg_replace('/\s\s+/', ' ', $res[1]);
+                $item = $prefix['start'] . $res . $prefix['end'];
+            }
+        }, $prefix);
+
+        $json = json_encode($array, 320);
+        return str_replace(['"'. $prefix['start'], $prefix['end'] . '"'], '', $json);
+    }
 }
