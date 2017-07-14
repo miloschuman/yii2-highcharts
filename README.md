@@ -30,14 +30,14 @@ The preferred way to install this extension is through [composer](http://getcomp
 
 Either run
 
-```
-php composer.phar require --prefer-dist miloschuman/yii2-highcharts-widget "dev-master"
+```sh
+php composer.phar require miloschuman/yii2-highcharts-widget
 ```
 
 or add
 
-```
-"miloschuman/yii2-highcharts-widget": "dev-master"
+```sh
+"miloschuman/yii2-highcharts-widget": "^5.0"
 ```
 
 to the require section of your `composer.json` file.
