@@ -1,8 +1,11 @@
 Yii2 Highcharts Changelog
 =========================
 
+### [v6.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v6.0) (2017-10-27) ###
+* Upgraded Highcharts JS library to the latest release (6.0.2). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+
 ### [v5.0.2](https://github.com/miloschuman/yii2-highcharts/releases/tag/v5.0.2) (2016-11-16) ###
-* Upgraded Highcharts JS library to the latest release (5.0.2). See the Highcharts [changelog](http://highcharts.com/documentation/changelog) for more information about what's new in this version.
+* Upgraded Highcharts JS library to the latest release (5.0.2).
 
 ### [v5.0.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v5.0.0) (2016-10-03) ###
 * Upgraded Highcharts JS library to the latest release (5.0.0).
