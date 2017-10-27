@@ -37,7 +37,7 @@ php composer.phar require miloschuman/yii2-highcharts-widget
 or add
 
 ```sh
-"miloschuman/yii2-highcharts-widget": "^5.0"
+"miloschuman/yii2-highcharts-widget": "^6.0"
 ```
 
 to the require section of your `composer.json` file.
