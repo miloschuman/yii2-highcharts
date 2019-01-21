@@ -37,7 +37,7 @@ php composer.phar require miloschuman/yii2-highcharts-widget
 or add
 
 ```sh
-"miloschuman/yii2-highcharts-widget": "^6.0"
+"miloschuman/yii2-highcharts-widget": "^7.0"
 ```
 
 to the require section of your `composer.json` file.
@@ -114,6 +114,8 @@ In this scenario, you would need to write and include your own JavaScript to dis
 Tips
 ----
 
+* This extension uses Bower to load the required Highcharts assets, so there is no need to change
+  the version number in your `composer.json` file until the next major release.
 * If you need to use JavaScript in any of your configuration options, use Yii's [[JsExpression]] object. For instance:
 
   ```php
