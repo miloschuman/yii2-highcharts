@@ -89,6 +89,29 @@ class Highcharts extends Widget
 
         parent::run();
     }
+    /**
+     * Fixes responsive width bug when highchart is rendered inside bootstrap modal
+     */
+    public function modalResponsiveFix() {
+        //specify the container highchart is rendered To
+        $renderObj = "$(\"#" . $this->options['chart']['renderTo']."\")";
+
+        $jsfix = "{$renderObj}.parents().each(function( index ) {
+            if(($(this).data('bs.modal') || {}).isShown) {
+                $(this).removeClass( 'fade' );
+                $(this).on('show.bs.modal', function() {
+                    {$renderObj}.css('visibility', 'hidden');
+                });
+                $(this).on('shown.bs.modal', function() {
+                    var chart = {$renderObj}.highcharts();
+                    {$renderObj}.css('visibility', 'initial');
+                    chart.reflow();
+                });
+            }
+         });";
+
+        return $jsfix;
+    }
 
     /**
      * Registers required assets and the executing code block with the view
@@ -99,9 +122,12 @@ class Highcharts extends Widget
         HighchartsAsset::register($this->view)->withScripts($this->scripts);
 
         // prepare and register JavaScript code block
+
         $jsOptions = Json::encode($this->options);
         $setupOptions = Json::encode($this->setupOptions);
         $js = "Highcharts.setOptions($setupOptions); new Highcharts.{$this->constr}($jsOptions);";
+        $js.=$this->modalResponsiveFix();
+
         $key = __CLASS__ . '#' . $this->id;
         if (is_string($this->callback)) {
             $js = "function {$this->callback}(data) {{$js}}";
