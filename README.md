@@ -5,9 +5,9 @@ Yii2 Highcharts Widget
 [![Total Downloads](https://poser.pugx.org/miloschuman/yii2-highcharts-widget/downloads.png)](https://packagist.org/packages/miloschuman/yii2-highcharts-widget)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/miloschuman/yii2-highcharts/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/miloschuman/yii2-highcharts/?branch=master)
 
-Easily add [Highcharts, Highstock and Highmaps](http://www.highcharts.com/) graphs to your Yii2 application.
+Easily add [Highcharts, Highstock and Highmaps](https://www.highcharts.com/) graphs to your Yii2 application.
 
-![Screen Shot](http://www.yiiframework.com/extension/yii2-highcharts-widget/files/screenshot.png)
+![Screen Shot](https://www.yiiframework.com/extension/yii2-highcharts-widget/files/screenshot.png)
 
 
 About
@@ -26,7 +26,7 @@ About
 Installation
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+The preferred way to install this extension is through [composer](https://getcomposer.org/download/).
 
 Either run
 
@@ -69,7 +69,7 @@ echo Highcharts::widget([
 ]);
 ```
 
-By configuring the `options` property, you can specify the options that need to be passed to the Highcharts JavaScript object. Please refer to the demo gallery and documentation on the [Highcharts website](http://www.highcharts.com/) for possible options.
+By configuring the `options` property, you can specify the options that need to be passed to the Highcharts JavaScript object. Please refer to the demo gallery and documentation on the [Highcharts website](https://www.highcharts.com/) for possible options.
 
 See [/doc/examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples) for more usage examples.
 
@@ -96,7 +96,7 @@ echo Highcharts::widget([
 ]);
 ```
 
-*Note:* You must provide a *valid* JSON string (with double quotes) when using the second option. You can quickly validate your JSON string online using [JSONLint](http://jsonlint.com/).
+*Note:* You must provide a *valid* JSON string (with double quotes) when using the second option. You can quickly validate your JSON string online using [JSONLint](https://jsonlint.com/).
 
 ### Just the Assets ###
 
@@ -108,7 +108,7 @@ use miloschuman\highcharts\HighchartsAsset;
 HighchartsAsset::register($this)->withScripts(['highstock', 'modules/exporting', 'modules/drilldown']);
 ```
 
-In this scenario, you would need to write and include your own JavaScript to display the charts, just as illustrated in the [Highcharts Demo](http://www.highcharts.com/demo), [Highstock Demo](http://www.highcharts.com/stock/demo) and [Highmaps Demo](http://www.highcharts.com/maps/demo) pages.
+In this scenario, you would need to write and include your own JavaScript to display the charts, just as illustrated in the [Highcharts Demo](https://www.highcharts.com/demo), [Highstock Demo](https://www.highcharts.com/stock/demo) and [Highmaps Demo](https://www.highcharts.com/maps/demo) pages.
 
 
 Tips

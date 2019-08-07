@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Highstock class file.
+ * GanttChart class file.
  *
  * @author Milo Schuman <miloschuman@gmail.com>
  * @link https://github.com/miloschuman/yii2-highcharts/
@@ -13,9 +13,8 @@ namespace miloschuman\highcharts;
 /**
  * @see Highcharts
  */
-class Highstock extends Highcharts
+class GanttChart extends Highcharts
 {
-
-    protected $constr = 'stockChart';
-    protected $baseScript = 'modules/stock';
+    protected $constr = 'ganttChart';
+    protected $baseScript = 'modules/gantt';
 }

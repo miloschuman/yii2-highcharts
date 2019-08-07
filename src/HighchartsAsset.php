@@ -5,7 +5,7 @@
  *
  * @author Milo Schuman <miloschuman@gmail.com>
  * @link https://github.com/miloschuman/yii2-highcharts/
- * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license https://www.opensource.org/licenses/mit-license.php MIT License
  */
 
 namespace miloschuman\highcharts;
@@ -33,18 +33,11 @@ class HighchartsAsset extends AssetBundle
 
         // add files
         foreach ($scripts as $script) {
-            // theme files are not packaged with a .src.js version
-            $this->js[] = "$script." . ((strpos($script, 'themes/') === 0) ? 'js' : $ext);
+            $this->js[] = "$script.$ext";
         }
 
-        // make sure that either highcharts or highstock base file is included.
+        // make sure the highcharts base file is included first
         array_unshift($this->js, "highcharts.$ext");
-        $hasHighstock = in_array("highstock.$ext", $this->js);
-        if ($hasHighstock) {
-            array_unshift($this->js, "highstock.$ext");
-            // remove highcharts if highstock is used on page
-            $this->js = array_diff($this->js, ["highcharts.$ext"]);
-        }
 
         return $this;
     }

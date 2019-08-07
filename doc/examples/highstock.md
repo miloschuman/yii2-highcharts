@@ -2,7 +2,7 @@
 
 ## Area Spline with AJAX Data ##
 
-This example is ported from the Highstock ["Area Spline" demo](http://www.highcharts.com/stock/demo/areaspline).
+This example is ported from the Highstock ["Area Spline" demo](https://www.highcharts.com/stock/demo/areaspline).
 The `'callback'` option allows you to initialize the chart after an AJAX request or
 other preprocessing.
 
@@ -53,7 +53,7 @@ echo Highstock::widget([
 
 ## Compare Series with Multiple AJAX Requests ##
 
-This example is ported from the Highstock ["Compare Multiple Series" demo](http://www.highcharts.com/stock/demo/compare).
+This example is ported from the Highstock ["Compare Multiple Series" demo](https://www.highcharts.com/stock/demo/compare).
 The `'callback'` option allows you to initialize the chart after an AJAX request or
 other preprocessing.
 
@@ -69,7 +69,7 @@ $js = <<<MOO
 
         $.each(names, function(i, name) {
 
-            $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename='+ name.toLowerCase() +'-c.json&callback=?',	function(data) {
+            $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename='+ name.toLowerCase() +'-c.json&callback=?',	function(data) {
 
                 seriesOptions[i] = {
                     name: name,

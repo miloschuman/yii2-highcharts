@@ -2,7 +2,7 @@
 
 ## Basic Example ##
 
-This is a basic map example using the free [Highcharts Map Collection](http://www.highcharts.com/docs/maps/map-collection)
+This is a basic map example using the free [Highcharts Map Collection](https://www.highcharts.com/docs/maps/map-collection)
 data. Add the following code to any view file.
 
 ```php
@@ -12,7 +12,7 @@ use yii\web\JsExpression;
 
  // To use Highcharts Map Collection, we must register those files separately.
  // The 'depends' option ensures that the main Highmaps script gets loaded first.
-$this->registerJsFile('http://code.highcharts.com/mapdata/countries/de/de-all.js', [
+$this->registerJsFile('https://code.highcharts.com/mapdata/countries/de/de-all.js', [
     'depends' => 'miloschuman\highcharts\HighchartsAsset'
 ]);
 

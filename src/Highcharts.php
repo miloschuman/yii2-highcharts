@@ -5,7 +5,7 @@
  *
  * @author Milo Schuman <miloschuman@gmail.com>
  * @link https://github.com/miloschuman/yii2-highcharts/
- * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license https://www.opensource.org/licenses/mit-license.php MIT License
  */
 
 namespace miloschuman\highcharts;
@@ -17,7 +17,7 @@ use yii\helpers\Json;
 use yii\web\View;
 
 /**
- * Highcharts encapsulates the {@link http://www.highcharts.com/ Highcharts}
+ * Highcharts encapsulates the {@link https://www.highcharts.com/ Highcharts}
  * charting library's Chart object.
  *
  * To use this widget, you can insert the following code in a view:
@@ -52,13 +52,14 @@ use yii\web\View;
 class Highcharts extends Widget
 {
 
-    protected $constr = 'Chart';
+    protected $constr = 'chart';
     protected $baseScript = 'highcharts';
     public $options = [];
     public $htmlOptions = [];
     public $setupOptions = [];
     public $scripts = [];
     public $callback = false;
+    public $container;
 
     /**
      * Renders the widget.
@@ -83,8 +84,9 @@ class Highcharts extends Widget
         // merge options with default values
         $defaultOptions = ['chart' => ['renderTo' => $this->id]];
         $this->options = ArrayHelper::merge($defaultOptions, $this->options);
-        array_unshift($this->scripts, $this->baseScript);
+        $this->container = $this->options->chart->renderTo;
 
+        array_unshift($this->scripts, $this->baseScript);
         $this->registerAssets();
 
         parent::run();
@@ -101,7 +103,7 @@ class Highcharts extends Widget
         // prepare and register JavaScript code block
         $jsOptions = Json::encode($this->options);
         $setupOptions = Json::encode($this->setupOptions);
-        $js = "Highcharts.setOptions($setupOptions); new Highcharts.{$this->constr}($jsOptions);";
+        $js = "Highcharts.setOptions($setupOptions); new Highcharts.{$this->constr}('$this->container', $jsOptions);";
         $key = __CLASS__ . '#' . $this->id;
         if (is_string($this->callback)) {
             $js = "function {$this->callback}(data) {{$js}}";

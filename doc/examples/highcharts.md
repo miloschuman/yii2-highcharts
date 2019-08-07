@@ -2,7 +2,7 @@
 
 ## Combination Chart ##
 
-This example is ported from the Highcharts ["Column, Line and Pie" demo](http://www.highcharts.com/demo/combo/grid-light)
+This example is ported from the Highcharts ["Column, Line and Pie" demo](https://www.highcharts.com/demo/combo/grid-light)
 with optional exporting module and Grid Light theme enabled.
 
 ```php
@@ -88,5 +88,53 @@ echo Highcharts::widget([
             ],
         ],
     ]
+]);
+```
+
+## Gantt Chart ##
+
+This example is ported from the Highcharts ["Simple Gantt Chart" example](https://www.highcharts.com/docs/gantt/getting-started-gantt)
+
+```php
+use miloschuman\highcharts\GanttChart;
+echo GanttChart::widget([
+    'options' => [
+        'title' => ['text' => 'Simple Gantt Chart'],
+        'series' => [
+            [
+                'name' => 'Project 1',
+                'data' => [
+                    [
+                        'id' => 's',
+                        'name' => 'Start prototype',
+                        'start' => new JsExpression('Date.UTC(2014, 10, 18)'),
+                        'end' => new JsExpression('Date.UTC(2014, 10, 20)'),
+                    ],
+                    [
+                        'id' => 'b',
+                        'name' => 'Develop',
+                        'start' => new JsExpression('Date.UTC(2014, 10, 20)'),
+                        'end' => new JsExpression('Date.UTC(2014, 10, 25)'),
+                        'dependency' => 's',
+                    ],
+                    [
+                        'id' => 'a',
+                        'name' => 'Run acceptance tests',
+                        'start' => new JsExpression('Date.UTC(2014, 10, 23)'),
+                        'end' => new JsExpression('Date.UTC(2014, 10, 26)'),
+                    ],
+                    [
+                        'name' => 'Test prototype',
+                        'start' => new JsExpression('Date.UTC(2014, 10, 27)'),
+                        'end' => new JsExpression('Date.UTC(2014, 10, 29)'),
+                        'dependency' => [
+                            'a',
+                            'b',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
 ]);
 ```
