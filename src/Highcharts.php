@@ -84,7 +84,7 @@ class Highcharts extends Widget
         // merge options with default values
         $defaultOptions = ['chart' => ['renderTo' => $this->id]];
         $this->options = ArrayHelper::merge($defaultOptions, $this->options);
-        $this->container = $this->options->chart->renderTo;
+        $this->container = $this->options['chart']['renderTo'];
 
         array_unshift($this->scripts, $this->baseScript);
         $this->registerAssets();
