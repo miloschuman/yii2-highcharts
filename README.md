@@ -37,7 +37,7 @@ php composer.phar require miloschuman/yii2-highcharts-widget
 or add
 
 ```sh
-"miloschuman/yii2-highcharts-widget": "^7.0"
+"miloschuman/yii2-highcharts-widget": "^8.0"
 ```
 
 to the require section of your `composer.json` file.
@@ -105,7 +105,7 @@ If you merely want to include the Highcharts/Highstock/Highmaps javascript libra
 ```php
 use miloschuman\highcharts\HighchartsAsset;
 
-HighchartsAsset::register($this)->withScripts(['highstock', 'modules/exporting', 'modules/drilldown']);
+HighchartsAsset::register($this)->withScripts(['modules/stock', 'modules/exporting', 'modules/drilldown']);
 ```
 
 In this scenario, you would need to write and include your own JavaScript to display the charts, just as illustrated in the [Highcharts Demo](https://www.highcharts.com/demo), [Highstock Demo](https://www.highcharts.com/stock/demo) and [Highmaps Demo](https://www.highcharts.com/maps/demo) pages.
