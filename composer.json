@@ -14,7 +14,7 @@
 	"minimum-stability": "dev",
 	"require": {
 		"yiisoft/yii2": "*",
-        "bower-asset/highcharts" : "^7.0"
+        "bower-asset/highcharts" : "^8.0"
 	},
     "require-dev": {
 		"phpunit/phpunit": "~4.4"

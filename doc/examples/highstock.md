@@ -42,7 +42,7 @@ echo Highstock::widget([
                     ],
                     'stops' => [
                         [0, new JsExpression('Highcharts.getOptions().colors[0]')],
-                        [1, new JsExpression('Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get("rgba")')]
+                        [1, new JsExpression('Highcharts.color(Highcharts.getOptions().colors[0]).setOpacity(0).get("rgba")')]
                     ]
                 ]
             ]
