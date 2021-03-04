@@ -3,7 +3,6 @@ Yii2 Highcharts Changelog
 
 ### [v9.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v9.0) (2021-03-04) ###
 * Upgraded Highcharts JS library to the latest release (9.0). See the Highcharts [changelog](https://www.highcharts.com/blog/changelog/) for more information about what's new in this version.
-* Updated docs for #77 HighchartsAsset::register($this)->withScripts(['highstock']); results with error 16
 
 ### [v8.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v8.0) (2020-04-21) ###
 * Upgraded Highcharts JS library to the latest release (8.0).
