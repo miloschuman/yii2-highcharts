@@ -69,7 +69,7 @@ $js = <<<MOO
 
         $.each(names, function(i, name) {
 
-            $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename='+ name.toLowerCase() +'-c.json&callback=?',	function(data) {
+            $.getJSON('https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/'+ name.toLowerCase() +'-c.json',	function(data) {
 
                 seriesOptions[i] = {
                     name: name,
