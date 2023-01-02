@@ -147,6 +147,7 @@ class SeriesDataHelper extends Component implements JsonSerializable
     /**
      * @inheritdoc
      */
+     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->process();
