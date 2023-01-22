@@ -114,8 +114,29 @@ In this scenario, you would need to write and include your own JavaScript to dis
 Tips
 ----
 
-* This extension uses Bower to load the required Highcharts assets, so there is no need to change
+* As of v10, This extension uses Asset Packagist to load the required Highcharts assets, so there is no need to change
   the version number in your `composer.json` file until the next major release.
+  
+  If you are upgrading from v9.0 or earlier, you will need to add the following to your `composer.json` file:
+  ```json
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+  ```
+  
+  Make sure the previously used fxp/composer-asset-plugin is disabled in your `composer.json` file:
+  ```json
+  "config": {
+    "fxp-asset": {
+      "enabled": false
+    }
+  }
+  ```
+  
+  Then run `composer update` to install the new assets.
 * If you need to use JavaScript in any of your configuration options, use Yii's [[JsExpression]] object. For instance:
 
   ```php
@@ -144,7 +165,7 @@ Tips
   ],
   ...
   ```
-  For a list of available scripts, see the contents of `vendor/bower/highcharts/`.
+  For a list of available scripts, see the contents of `vendor/npm/highcharts/`.
 * You can access the JavaScript chart object from another script like this:
 
   ```javascript

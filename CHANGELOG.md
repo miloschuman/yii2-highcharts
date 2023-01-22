@@ -1,11 +1,16 @@
 Yii2 Highcharts Changelog
 =========================
 
+### [v10.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v10.0) (2023-01-22) ###
+* This release includes breaking changes. See [Tips](https://github.com/miloschuman/yii2-highcharts/tree/master/README.md#tips) for upgrade instructions.
+* Upgraded Highcharts JS library to the latest major release (10.0). See the Highcharts [changelog](https://www.highcharts.com/blog/changelog/) for more information about what's new in this version.
+* Fix temporarily suppress notice on PHP82 #92
+
 ### [v9.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v9.0) (2021-03-04) ###
-* Upgraded Highcharts JS library to the latest release (9.0). See the Highcharts [changelog](https://www.highcharts.com/blog/changelog/) for more information about what's new in this version.
+* Upgraded Highcharts JS library to the latest major release (9.0).
 
 ### [v8.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v8.0) (2020-04-21) ###
-* Upgraded Highcharts JS library to the latest release (8.0).
+* Upgraded Highcharts JS library to the latest major release (8.0).
 * Updated docs for #77 HighchartsAsset::register($this)->withScripts(['highstock']); results with error 16
 
 ### [v7.1.2](https://github.com/miloschuman/yii2-highcharts/releases/tag/v7.1.2) (2019-08-07) ###
@@ -60,7 +65,7 @@ Yii2 Highcharts Changelog
 
 ### [v4.1.5](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.1.5) (2015-04-29) ###
 * Upgraded Highcharts JS library to the latest release (4.1.5).
-* Added SeriesDataHelper class to to make preprocessing data easier. See included [SeriesDataHelper Examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/series-data-helper.md) for usage.
+* Added SeriesDataHelper class to make preprocessing data easier. See included [SeriesDataHelper Examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/series-data-helper.md) for usage.
 * Chart objects are no longer assigned to the generic `chart` variable on initialization. See [Tips](https://github.com/miloschuman/yii2-highcharts/tree/master/README.md#tips) for info on accessing your charts from other scripts.
 
 ### [v4.0.4](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.0.4) (2014-09-25) ###
