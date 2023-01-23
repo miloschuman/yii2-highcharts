@@ -1,6 +1,9 @@
 Yii2 Highcharts Changelog
 =========================
 
+### [v10.0.1](https://github.com/miloschuman/yii2-highcharts/releases/tag/v10.0.1) (2023-01-23) ###
+* Fixed issue #94 - invalid asset path
+
 ### [v10.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v10.0) (2023-01-22) ###
 * This release includes breaking changes. See [Tips](https://github.com/miloschuman/yii2-highcharts/tree/master/README.md#tips) for upgrade instructions.
 * Upgraded Highcharts JS library to the latest major release (10.0). See the Highcharts [changelog](https://www.highcharts.com/blog/changelog/) for more information about what's new in this version.
@@ -69,7 +72,7 @@ Yii2 Highcharts Changelog
 * Chart objects are no longer assigned to the generic `chart` variable on initialization. See [Tips](https://github.com/miloschuman/yii2-highcharts/tree/master/README.md#tips) for info on accessing your charts from other scripts.
 
 ### [v4.0.4](https://github.com/miloschuman/yii2-highcharts/releases/tag/v4.0.4) (2014-09-25) ###
-* Upgraded Highcharts JS library to the latest release (4.0.4). 
+* Upgraded Highcharts JS library to the latest release (4.0.4).
 * Added usage examples in [/doc/examples](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples).
 * Added HighmapsWidget. See included [Highmaps Widget Example](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/highmaps.md) for usage.
 * Added callback option to make AJAX loading easier. See included [Highstock Widget Example](https://github.com/miloschuman/yii2-highcharts/tree/master/doc/examples/highstock.md) for usage.
