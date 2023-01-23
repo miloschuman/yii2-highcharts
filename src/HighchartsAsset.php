@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class HighchartsAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/highcharts';
+    public $sourcePath = '@npm/highcharts';
     public $depends = ['yii\web\JqueryAsset'];
 
     /**
