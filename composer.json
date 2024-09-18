@@ -20,7 +20,7 @@
 	],
 	"require": {
 		"yiisoft/yii2": "*",
-		"npm-asset/highcharts" : "^10.0"
+		"npm-asset/highcharts" : "^11.0"
 	},
     "require-dev": {
 		"phpunit/phpunit": "~4.4"

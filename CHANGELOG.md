@@ -1,12 +1,15 @@
 Yii2 Highcharts Changelog
 =========================
 
+### [v11.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v11.0) (2024-09-18) ###
+* Upgraded Highcharts JS library to the latest major release (11.0). See the Highcharts [changelog](https://www.highcharts.com/blog/changelog/) for more information about what's new in this version.
+
 ### [v10.0.1](https://github.com/miloschuman/yii2-highcharts/releases/tag/v10.0.1) (2023-01-23) ###
 * Fixed issue #94 - invalid asset path
 
 ### [v10.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v10.0) (2023-01-22) ###
 * This release includes breaking changes. See [Tips](https://github.com/miloschuman/yii2-highcharts/tree/master/README.md#tips) for upgrade instructions.
-* Upgraded Highcharts JS library to the latest major release (10.0). See the Highcharts [changelog](https://www.highcharts.com/blog/changelog/) for more information about what's new in this version.
+* Upgraded Highcharts JS library to the latest major release (10.0).
 * Fix temporarily suppress notice on PHP82 #92
 
 ### [v9.0](https://github.com/miloschuman/yii2-highcharts/releases/tag/v9.0) (2021-03-04) ###
